@@ -1,31 +1,32 @@
 # Hexo Configuration
-## Docs: https://hexo.io/docs/configuration.html
+## Docs: http://hexo.io/docs/configuration.html
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: I am Hzhihua
-subtitle: 我是一头猪
-description: 我是一头赖猪
-author: 黄志华
-language: zh
-timezone: Asia/Shanghai
+title: 黄志华的博客
+subtitle: 目前在学习算法第四版(java版)
+description:  
+author: Hzhihua
+email: cnzhihua@gmail.com
+keywords: "PHP,Yii2,Python,java,算法"
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
 url: http://blog.hzhihua.top
 root: /
 permalink: :year/:month/:day/:title/
-permalink_defaults:
-
-# Directory
-source_dir: source
-public_dir: public
 tag_dir: tags
 archive_dir: archives
 category_dir: categories
 code_dir: downloads/code
-i18n_dir: :lang
-skip_render:
+permalink_defaults:
+
+#你的头像url
+avatar: https://avatars3.githubusercontent.com/u/18823393?s=460&v=4
+
+# Directory
+source_dir: source
+public_dir: public
 
 # Writing
 new_post_name: :title.md # File name of new posts
@@ -36,26 +37,44 @@ filename_case: 0
 render_drafts: false
 post_asset_folder: false
 relative_link: false
-future: true
-highlight:
-  enable: true
-  line_number: true
-  auto_detect: false
-  tab_replace:
-  
-# Home page setting
-# path: Root path for your blogs index page. (default = '')
-# per_page: Posts displayed per page. (0 = disable pagination)
-# order_by: Posts order. (Order by date descending by default)
-index_generator:
-  path: ''
-  per_page: 10
-  order_by: -date
-  
+highlight:                                                                                                                                                                                                   
+  enable: true                                                                                                                                                                                               
+  auto_detect: true                                                                                                                                                                                          
+  line_number: true                                                                                                                                                                                          
+  tab_replace: ''
+
 # Category & Tag
 default_category: uncategorized
 category_map:
 tag_map:
+
+# Content
+
+# 文章太长，截断按钮文字
+excerpt_link: more
+# 文章卡片右下角常驻链接，不需要请设置为false
+show_all_link: '展开全文'
+# 数学公式
+mathjax: false
+# 是否在新窗口打开链接
+open_in_new: false
+
+# Archives
+## 2: Enable pagination
+## 1: Disable pagination
+## 0: Fully Disable
+archive: 1
+category: 1
+tag: 1
+
+# Server
+## Hexo uses Connect as a server
+## You can customize the logger format as defined in
+## http://www.senchalabs.org/connect/logger.html
+port: 4000
+server_ip: localhost
+logger: false
+logger_format: dev
 
 # Date / Time format
 ## Hexo uses Moment.js to parse and display date
@@ -66,36 +85,80 @@ time_format: HH:mm:ss
 
 # Pagination
 ## Set per_page to 0 to disable pagination
-per_page: 10
+per_page: 8
 pagination_dir: page
 
+# 智能菜单
+# 如不需要，将该对应项置为false
+# 比如
+#smart_menu:
+#  friends: false
+smart_menu:
+  innerArchive: '所有文章'
+  friends: '友情链接'
+  aboutme: '关于我'
+
+friends:
+  google: https://www.google.com
+#  友情链接2: http://localhost:4000/
+#  友情链接3: http://localhost:4000/
+#  友情链接4: http://localhost:4000/
+#  友情链接5: http://localhost:4000/
+#  友情链接6: http://localhost:4000/
+
+aboutme: 我叫黄志华，谢谢大家。
+
+# Disqus
+disqus_shortname:
+
 # Extensions
-## Plugins: https://hexo.io/plugins/
-## Themes: https://hexo.io/themes/
+## Plugins: https://github.com/hexojs/hexo/wiki/Plugins
+## Themes: https://github.com/hexojs/hexo/wiki/Themes
+# plugins:
+#  - hexo-generator-feed
+#  - hexo-generator-baidu-sitemap
+#  - hexo-generator-sitemap
+
 theme: yilia
+exclude_generator:
 
 # Deployment
-## Docs: https://hexo.io/docs/deployment.html
+## Docs: http://hexo.io/docs/deployment.html
+#deploy:
+#  type: git
+#  repository: git@github.com:litten/litten.github.com.git
+#  branch: master
+
 deploy:
   type: git
-  repo: git@github.com:Hzhihua/hzhihua.github.io.git
+  repo: https://github.com/Hzhihua/hzhihua.github.io.git
   branch: master
 
+sitemap:
+    path: sitemap.xml
+baidusitemap:
+    path: baidusitemap.xm
+
+feed:
+    type: atom
+    path: atom.xml
+    limit: 100
+
 jsonContent:
-    meta: false
-    pages: false
-    posts:
-      title: true
-      date: true
-      path: true
-      text: false
-      raw: false
-      content: false
-      slug: false
-      updated: false
-      comments: false
-      link: false
-      permalink: false
-      excerpt: false
-      categories: false
-      tags: true
+  meta: false
+  pages: false
+  posts:
+    title: true
+    date: true
+    path: true
+    text: false
+    raw: false
+    content: false
+    slug: false
+    updated: false
+    comments: false
+    link: false
+    permalink: false
+    excerpt: false
+    categories: false
+    tags: true
