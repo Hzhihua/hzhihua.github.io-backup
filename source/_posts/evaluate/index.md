@@ -1,41 +1,48 @@
 ---
-title: evaluate
+title: 双栈算术表达式求值算法
+categories: 算法(第四版)
+tags: 
+    - 算法(第四版)
+    - 第一章
 date: 2017-10-30 08:42:07
 ---
 
 # Dijkatra的双栈算术表达式求值算法
+
 > 算法第四版(java版)  P 80-81
+
 ```java
 import java.util.Stack;
 
 public class Evaluate {
-	public static void main(String[] args) {
-		Stack<String> ops = new Stack<String>();
-		Stack<Double> vals = new Stack<Double>();
-		while (!StdIn.isEmpty()) {
-			String s = StdIn.readString();
-			if      (s.equals("("))	              ;
-			else if (s.equals("+"))	   ops.push(s);
-			else if (s.equals('-'))    ops.push(s);
-			else if (s.equals("*"))    ops.push(s);
-			else if (s.equals("/"))    ops.push(s);
-			else if (s.equals("sqrt")) ops.push(s);
-			else if (s.equals(")")) {
-				// pop stack
-				String op = ops.pop();
-				Double val = vals.pop();
-				if (op.equals("+"))         val = vals.pop() + val;
-				else if (op.equals("-"))    val = vals.pop() - val;
-				else if (op.equals("*"))    val = vals.pop() * val;
-				else if (op.equals("/"))    val = vals.pop() / val;
-				else if (op.equals("sqrt")) val = Math.sqrt(val);
-				vals.push(val);
-			}
-			else vals.push(Double.parseDouble(s));
-		}
-		System.out.println(vals.pop());
-	}
+    public static void main(String[] args) {
+        Stack<String> ops = new Stack<String>();
+        Stack<Double> vals = new Stack<Double>();
+        while (!StdIn.isEmpty()) {
+            String s = StdIn.readString();
+            if      (s.equals("("))               ;
+            else if (s.equals("+"))    ops.push(s);
+            else if (s.equals('-'))    ops.push(s);
+            else if (s.equals("*"))    ops.push(s);
+            else if (s.equals("/"))    ops.push(s);
+            else if (s.equals("sqrt")) ops.push(s);
+            else if (s.equals(")")) {
+                // pop stack
+                String op = ops.pop();
+                Double val = vals.pop();
+                if (op.equals("+"))         val = vals.pop() + val;
+                else if (op.equals("-"))    val = vals.pop() - val;
+                else if (op.equals("*"))    val = vals.pop() * val;
+                else if (op.equals("/"))    val = vals.pop() / val;
+                else if (op.equals("sqrt")) val = Math.sqrt(val);
+                vals.push(val);
+            }
+            else vals.push(Double.parseDouble(s));
+        }
+        System.out.println(vals.pop());
+    }
 }
+
 ```
 
 > evaluate_data.txt
@@ -77,8 +84,9 @@ $ 1.618033988749895
 
 ## 图解
 
-![evaluate图解](images/evaluate/Dijkstra-evaluate.png)
+![evaluate图解](/images/evaluate/Dijkstra-evaluate.png)
 
 ## 源代码
 
-[github](https://github.com/Hzhihua/hzhihua.github.io-backup/tree/master/source/evaluate) [download](evaluate.tar.gz) 
+[github](https://github.com/Hzhihua/hzhihua.github.io-backup/tree/master/source/_posts/evaluate) [download](/download/evaluate/Evaluate.tar.gz) 
+
